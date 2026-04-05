@@ -1,6 +1,4 @@
 # My Portfolio Website 
-# Prism. 
-
 A responsive, multi-page portfolio website built using HTML5, CSS3, and JavaScript.
 ## Pages
 
