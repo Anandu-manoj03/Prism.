@@ -1,6 +1,5 @@
-# Prism.
-Prism is a showcase of my creative and technical work, featuring a curated collection of projects  I've designed and developed.Explore to see how I bring ideas to life through design and code. 
-# My Portfolio Website
+# My Portfolio Website 
+#Prism. 
 
 A responsive, multi-page portfolio website built using HTML5, CSS3, and JavaScript.
 ## Pages
