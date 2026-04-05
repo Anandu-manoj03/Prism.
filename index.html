@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PRISM | The Portfolio of Anandu Manoj</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    #home {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 8rem 5% 5rem;
+      position: relative; overflow: hidden;
+      flex-direction: column; justify-content: center;
+    }
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%; filter: blur(100px); pointer-events: none;
+    }
+    .blob1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(3, 112, 201, 0.849), transparent 80%);
+      top: -100px; right: -100px;
+      animation: blobFloat 8s ease-in-out infinite;
+    }
+    .blob2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(196, 62, 80, 0.904), transparent 80%);
+      bottom: 0; left: -80px;
+      animation: blobFloat 10s ease-in-out infinite reverse;
+    }
+    .hero-content { max-width: 700px; position: relative; z-index: 1; width: 100%; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px; border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(124,92,252,0.08);
+      font-size: 0.8rem; color: var(--accent); letter-spacing: 0.08em;
+      text-transform: uppercase; margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero-tag span {
+      width:6px; height:6px; border-radius:50%;
+      background: var(--accent); animation: pulse 2s infinite;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 900; line-height: 1.05;
+      letter-spacing: -0.03em; margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+    .hero-title .highlight {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+}
+    .hero-desc {
+      font-size: 1.1rem; color: var(--muted); line-height: 1.7;
+      max-width: 520px; margin-bottom: 2.5rem;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+    .hero-cta {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+    .stats-bar {
+      display: flex; gap: 3rem; margin-top: 4rem;
+      position: relative; z-index: 1;
+      animation: fadeUp 0.8s 0.5s ease both;
+    }
+    .stat h3 {
+      font-family: var(--font-display);
+      font-size: 2rem; font-weight: 900;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+}
+    .stat p { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; }
+
+    .quick-links {
+      padding: 4rem 5%;
+      background: var(--surface);
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    }
+    .quick-card {
+      padding: 2rem;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; text-decoration: none; color: var(--text);
+      transition: all 0.3s; display: flex; flex-direction: column; gap: 0.8rem;
+    }
+    .quick-card:hover {
+      transform: translateY(-6px); border-color: var(--accent);
+      box-shadow: 0 20px 60px rgba(124,92,252,0.12);
+    }
+    .quick-card-icon { font-size: 2rem; }
+    .quick-card h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; }
+    .quick-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+    .quick-card span { font-size: 0.85rem; color: var(--accent); font-weight: 500; margin-top: auto; }
+
+    @media (max-width: 768px) {
+      .stats-bar { gap: 2rem; flex-wrap: wrap; }
+      .quick-links { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">PRISM.</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <section id="home">
+    <div class="hero-blob blob1"></div>
+    <div class="hero-blob blob2"></div>
+    <div class="hero-content">
+      <div class="hero-tag"><span></span> Available for opportunities</div>
+      <h1 class="hero-title">
+        Hi, I'm <span class="highlight">Anandu Manoj</span><br/>
+        UI Developer &amp; Designer
+      </h1>
+      <p class="hero-desc">
+        A Computer Science student passionate about crafting beautiful,
+        user-centered digital experiences using HTML, CSS &amp; JavaScript.
+      </p>
+      <div class="hero-cta">
+        <a href="projects.html" class="btn btn-primary">View My Work →</a>
+        <a href="contact.html" class="btn btn-outline">Get In Touch</a>
+      </div>
+      <div class="stats-bar">
+        <div class="stat"><h3>3+</h3><p>Projects Built</p></div>
+        <div class="stat"><h3>1st</h3><p>Year CSE</p></div>
+        <div class="stat"><h3>∞</h3><p>Curiosity</p></div>
+      </div>
+    </div>
+  </section> 
+
+  <div class="quick-links">
+    <a href="about.html" class="quick-card reveal">
+      <div class="quick-card-icon">👤</div>
+      <h3>About Me</h3>
+      <p>Learn about my background, skills, and passion for UI development.</p>
+      <span>Read more →</span>
+    </a>
+    <a href="projects.html" class="quick-card reveal">
+      <div class="quick-card-icon">🚀</div>
+      <h3>My Projects</h3>
+      <p>Browse the projects I've built using HTML, CSS and JavaScript.</p>
+      <span>See projects →</span>
+    </a>
+    <a href="contact.html" class="quick-card reveal">
+      <div class="quick-card-icon">💬</div>
+      <h3>Contact</h3>
+      <p>Got a question or opportunity? I'd love to hear from you.</p>
+      <span>Get in touch →</span>
+    </a>
+  </div>
+
+  <footer>
+    <div class="social-links">
+      <a href="https://github.com/nandu17" class="social-link" target="_blank" title="GitHub">⌨</a>
+      <a href="https://linkedin.com/in/nandu17" class="social-link" target="_blank" title="LinkedIn">in</a>
+      <a href="https://gmail.com/nandu17@gmail.com" class="social-link" title="Email">✉</a>
+    </div>
+    <p>Designed &amp; Built by <a href="index.html">Anandu Manoj</a> &mdash; 23CSE113 User Interface Design</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
