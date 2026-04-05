@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects | Anandu Manoj</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ===== FILTER TABS ===== */
+    .filter-bar {
+      display: flex; gap: 0.75rem; flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .filter-btn {
+      padding: 0.5rem 1.2rem; border-radius: 999px;
+      border: 1px solid var(--border);
+      background: transparent; color: var(--muted);
+      font-family: var(--font-body); font-size: 0.85rem;
+      cursor: pointer; transition: all 0.3s;
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: rgba(124,92,252,0.12);
+      border-color: var(--accent); color: var(--accent);
+    }
+    /* ===== PROJECTS GRID ===== */
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      transition: all 0.4s; position: relative;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      box-shadow: 0 20px 60px rgba(124,92,252,0.15);
+    }
+    .project-thumb {
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, var(--surface), var(--card));
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem;
+    }
+    .project-thumb::after {
+      content:''; position:absolute; inset:0;
+      background: linear-gradient(to bottom, transparent 40%, var(--card));
+    }
+    .project-body { padding: 1.5rem; }
+    .project-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .tag {
+      font-size: 0.72rem; padding: 3px 10px; border-radius: 999px;
+      background: rgba(124,92,252,0.12); color: var(--accent);
+      border: 1px solid rgba(124,92,252,0.2); font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .project-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem; font-weight: 700; margin-bottom: 0.6rem;
+    }
+    .project-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.2rem; }
+    .project-links { display: flex; gap: 0.8rem; }
+    .project-link {
+      font-size: 0.82rem; color: var(--accent); text-decoration: none;
+      display: flex; align-items: center; gap: 5px; font-weight: 500;
+      transition: gap 0.2s;
+    }
+    .project-link:hover { gap: 9px; }
+
+    /* ===== HIDDEN CLASS (for filter) ===== */
+    .project-card.hidden { display: none; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">PRISM.</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-blob"></div>
+    <p class="section-label">What I've Built</p>
+    <h1 class="section-title">My Projects</h1>
+    <p class="section-sub">A selection of projects I've designed and built. Click any to explore.</p>
+  </div>
+
+  <!-- PROJECTS SECTION -->
+  <section style="background:var(--bg);">
+    <!-- Filter Bar -->
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" onclick="filterProjects('all', this)">All</button>
+      <button class="filter-btn" onclick="filterProjects('html', this)">HTML</button>
+      <button class="filter-btn" onclick="filterProjects('css', this)">CSS</button>
+      <button class="filter-btn" onclick="filterProjects('js', this)">JavaScript</button>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- PROJECT 1 -->
+      <div class="project-card reveal" data-tags="html css">
+        <div class="project-thumb">🌐</div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+          </div>
+          <h3>Prism UI</h3>
+          <p>
+            It addresses the need for lightweight, dependency-free UI elements by providing a collection of
+            high-performance components.
+          </p>
+          <div class="project-links">
+            <a href="https://prismjs.com" class="project-link" target="_blank">Live Demo →</a>
+            <a href="https://pure-css.github.io" class="project-link" target="_blank">GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div class="project-card reveal" data-tags="html css js">
+        <div class="project-thumb">📱</div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JS</span>
+          </div>
+          <h3>SkyCast</h3>
+          <p>
+            SkyCast is a dynamic web application that provides hyper-local weatheer data and 
+            5-day forecasts using the OpenWeather API.
+          </p>
+          <div class="project-links">
+            <a href="#" class="project-link" target="_blank">Live Demo →</a>
+            <a href="#" class="project-link" target="_blank">GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 3 -->
+      <div class="project-card reveal" data-tags="css">
+        <div class="project-thumb">🎨</div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">CSS</span>
+            <span class="tag">Animation</span>
+          </div>
+          <h3>Orbitals</h3>
+          <p>
+            Orbitals is a high-performance,interactive model of the solar system built using pure
+            CSS for its motion and depth.
+          </p>
+          <div class="project-links">
+            <a href="#" class="project-link" target="_blank">Live Demo →</a>
+            <a href="#" class="project-link" target="_blank">GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 4 (bonus) -->
+      <div class="project-card reveal" data-tags="js html">
+        <div class="project-thumb">⚙️</div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">JavaScript</span>
+            <span class="tag">HTML</span>
+          </div>
+          <h3>TaskFlow</h3>
+          <p>
+            TaskFlow is a high-performance task management application designed to 
+            eliminate "mental clutter" through a clean, distraction-free interface.
+          </p>
+          <div class="project-links">
+            <a href="#" class="project-link" target="_blank">Live Demo →</a>
+            <a href="#" class="project-link" target="_blank">GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="social-links">
+      <a href="https://github.com/nandu17" class="social-link" target="_blank" title="GitHub">⌨</a>
+      <a href="https://linkedin.com/in/nandu17" class="social-link" target="_blank" title="LinkedIn">in</a>
+      <a href="https://gmail.com/nandu17@gmail.com" class="social-link" title="Email">✉</a>
+    </div>
+    <p>Designed &amp; Built by <a href="index.html">Anandu Manoj</a> &mdash; 23CSE113 User Interface Design</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Filter functionality
+    function filterProjects(tag, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.project-card').forEach(card => {
+        const tags = card.dataset.tags || '';
+        if (tag === 'all' || tags.includes(tag)) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
